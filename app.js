@@ -3,21 +3,31 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+<<<<<<< HEAD
 const hbs = require('hbs');
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var travelRouter = require('./app_server/routes/travel');
+=======
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+>>>>>>> 13f19138957b3181845e6de22177d0de0264e1db
 
 var app = express();
 
 // view engine setup
+<<<<<<< HEAD
 app.set('views', path.join(__dirname,'app_server', 'views'));
 
 // register handlebars partials(https://www.npmjs.com/package/hbs)
 hbs.registerPartials(path.join(__dirname, 'app_server','views/partials'));
 
 
+=======
+app.set('views', path.join(__dirname, 'views'));
+>>>>>>> 13f19138957b3181845e6de22177d0de0264e1db
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -28,7 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+<<<<<<< HEAD
 app.use('/travel', travelRouter);
+=======
+>>>>>>> 13f19138957b3181845e6de22177d0de0264e1db
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

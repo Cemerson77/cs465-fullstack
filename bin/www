@@ -5,7 +5,11 @@
  */
 
 var app = require('../app');
+<<<<<<< HEAD
 var debug = require('debug')('travlr:server');
+=======
+var debug = require('debug')('force:server');
+>>>>>>> 13f19138957b3181845e6de22177d0de0264e1db
 var http = require('http');
 
 /**
