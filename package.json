@@ -1,13 +1,8 @@
 {
-<<<<<<< HEAD
   "name": "travlr",
   "version": "1.0.0",
   "description": "Travlr Getaways",
   "author": "SNHU COCE <coce@snhu.edu>",
-=======
-  "name": "force",
-  "version": "0.0.0",
->>>>>>> 13f19138957b3181845e6de22177d0de0264e1db
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -15,18 +10,11 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-<<<<<<< HEAD
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "hbs": "^4.1.2",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.14"
-=======
-    "express": "~4.16.1",
-    "hbs": "~4.0.4",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
->>>>>>> 13f19138957b3181845e6de22177d0de0264e1db
   }
 }
