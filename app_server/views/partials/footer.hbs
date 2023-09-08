@@ -31,3 +31,20 @@
 		© 2023 by Travlr Getaways. All Rights Reserved
 	</p>
 </div>
+<script>
+    // JavaScript code to highlight the current page in the footer navigation menu
+    const currentPathname = window.location.pathname;
+    const footerNavigationLinks = document.querySelectorAll('#footer .navigation li a');
+
+    footerNavigationLinks.forEach(link => {
+        const linkPathname = new URL(link.href, window.location.origin).pathname;
+
+        // Remove the "active" class from all links
+        link.parentElement.classList.remove('active');
+
+        // Check if the current pathname and link's pathname match
+        if (currentPathname === linkPathname) {
+            link.parentElement.classList.add('active');
+        }
+    });
+</script>
