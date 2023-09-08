@@ -1,4 +1,4 @@
-/* Get homepage */
+/* Get travel view */
 const travel = (req, res) => {
     const pageTitle = 'Travlr Getaways - Travel';
     res.render('travel', { title: pageTitle });
