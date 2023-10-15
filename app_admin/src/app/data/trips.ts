@@ -1,7 +1,6 @@
 export const trips = 
 [
 
-
     {
         "code": "DAWR210315",
         "name": "Dawson's Reef",

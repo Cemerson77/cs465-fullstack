@@ -7,9 +7,9 @@
             {{trip.perPerson|currency:'USD':true}} per person</p>
             <p class="card-text" [innerHTML]="trip.description"></p>
         </div>
-        <div>
+        <div *ngIf="isLoggedIn()">
             <button (click)="editTrip(trip)" class="btn btn-info">Edit</button>
-            <span style="margin-right: 10px;"></span> <!-- This creates space between buttons -->
+            <span style="margin-right: 10px;"></span> 
             <button (click)="deleteTrip(trip)" class="btn btn-info">Delete</button>
         </div>
 </div>

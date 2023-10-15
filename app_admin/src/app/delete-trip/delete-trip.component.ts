@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+//import { Trip } from '../models/trip';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TripDataService } from '../services/trip-data.service';
 
 @Component({
@@ -8,28 +9,60 @@ import { TripDataService } from '../services/trip-data.service';
   templateUrl: './delete-trip.component.html',
   styleUrls: ['./delete-trip.component.css']
 })
+
 export class DeleteTripComponent implements OnInit {
 
-  constructor(
+  deleteForm: FormGroup;
+  submitted = false;
+
+  constructor( 
+    private formBuilder: FormBuilder,
     private router: Router,
     private tripService: TripDataService
-  ) { }
+   ) { }
 
-  ngOnInit() {
+  ngOnInit():  void{
+    //retrieve stashed tripId
     let tripCode = localStorage.getItem("tripCode");
-    if (!tripCode) {
-      alert("Something wrong, couldn't find where I stashed the tripCode!");
+    if (!tripCode){
+      alert("Something wrong, couldn't find where I stashed tripCode!");
       this.router.navigate(['']);
       return;
     }
 
-    console.log("DeleteTripComponent found tripCode " + tripCode);
+  console.log('deleteTripComponent#onInit found tripCode' + tripCode );
 
-    this.tripService.deleteTrip(tripCode)
-      .then( data => {
-        console.log(data);
-        this.router.navigate(['']);
-      });
+  //initialize form
+  this.deleteForm = this.formBuilder.group({
+      _id: [],
+      code: ['', Validators.required],
+      name: ['', Validators.required],
+      length: ['', Validators.required],
+      start: ['', Validators.required],
+      resort: ['', Validators.required],
+      perPerson: ['', Validators.required],
+      image: ['', Validators.required],
+      description: ['', Validators.required],
+   })
+
+   console.log('deleteTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
+    
+   this.tripService.getTrip(tripCode)
+      .then(data => {
+      console.log(data);
+      // Don't use deleteForm.setValue() as it will throw console error
+      this.deleteForm.patchValue(data[0]);
+      })
+   }
+
+   onSubmit() {
+    this.submitted = true;
+    if (this.deleteForm.valid) {
+      this.tripService.deleteTrip(this.deleteForm.value)
+      .then(data => {
+          console.log(data);
+          this.router.navigate(['']);
+        });
+    }
   }
-
 }
